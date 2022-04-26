@@ -1,4 +1,4 @@
-SUBDIRETÓRIO DO PSET1
+** SUBDIRETÓRIO DO PSET1 **
 
    - O arquivo "projeto_elmasri.architect" contém o projeto Elmasri no SQL Power Architect.
 
