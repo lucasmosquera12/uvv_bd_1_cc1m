@@ -1,25 +1,45 @@
-CREATE ROLE lucas WITH 
-	SUPERUSER
-	CREATEDB
-	CREATEROLE
-	INHERIT
-	LOGIN
-	NOREPLICATION
-	NOBYPASSRLS
-	CONNECTION LIMIT -1;
+/* logando no usuário postgres */
+su - postgres
+postgres
 
-CREATE DATABASE uvv
-    WITH
-    OWNER = lucas
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'pt_BR.UTF-8'
-    LC_CTYPE = 'pt_br.UTF-8'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-COMMENT ON DATABASE uvv
-    IS 'banco de dados UVV';
- 
-CREATE SCHEMA elmasri AUTHORIZATION lucas;
+/* CRIAÇÃO DO USUÁRIO lucas */
+createuser lucas -dPs
+123456 -- senha do usuário lucas
+123456 -- repetição da senha do usuário lucas
+computacao@raiz -- senha administrativa
+
+/* Entrando no terminal postgresql */
+
+psql -U postgres -W
+computacao@raiz -- senha do usuário lucas
+
+
+/* CRIAÇÃO DO BANCO DE DADOS uvv */
+
+create database uvv with
+owner = 'lucas'
+template = template0
+encoding = 'UTF8'
+lc_collate = 'pt_BR.UTF-8'
+lc_ctype = 'pt_BR.UTF-8'
+allow_connections = true;
+
+/* ACESSANDO O BANCO DE DADOS uvv COM O USUÁRIO lucas */
+
+\c uvv lucas;
+123456 -- Senha do usuário
+
+/* criando o esquema elmasri como usuário lucas */
+
+create schema elmasri
+authorization "lucas";
+
+/* definindo o esquema "elmasri" como padrão */
+
+alter user "lucas"
+set search_path to elmasri, "\user", public;
+
+/* Criando as tabelas */
 
 
 CREATE TABLE elmasri.funcionario (
