@@ -1,7 +1,7 @@
-REPOSITÓRIO PSET 1
+**REPOSITÓRIO PSET 1**
 
-Aluno: Lucas do Amaral Mosquéra
+  - Aluno: Lucas do Amaral Mosquéra
 
-Professor: Abrantes Araujo Silva Filho
+  - Professor: Abrantes Araujo Silva Filho
 
-Turma: CC1M
+  - Turma: CC1M
